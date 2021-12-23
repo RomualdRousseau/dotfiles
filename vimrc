@@ -2,6 +2,7 @@
 
 set nocompatible
 syntax on
+set nowrap
 
 " Search
 set hlsearch
@@ -23,11 +24,19 @@ set mouse=a
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
+
+
+" Airline settings
+
+let g:airline_theme='badwolf'
+let g:airline_powerline_fonts = 1
 
 
 " NERDTree settings
