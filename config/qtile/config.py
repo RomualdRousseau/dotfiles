@@ -26,6 +26,7 @@
 
 from typing import List  # noqa: F401
 
+from libqtile import qtile
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -33,6 +34,18 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = guess_terminal()
+
+# To match the vim Badwolf theme
+colors = [
+    '#242321', # darkgravel
+    '#8cffba', # saltwatertaffy
+    '#45413b', # deepgravel
+    '#f4cf86', # dirtyblonde
+    '#aeee00', # lime
+    '#141413', # blackestgravel
+    '#ffa724', # orange
+    '#141413'  # blackestgravel
+]
 
 keys = [
     # Switch between windows
@@ -100,14 +113,15 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
+    layout.Columns(border_focus=colors[6], border_width=4),
+    layout.Bsp(border_focus=colors[6], border_width=4),
     layout.Max(),
+    layout.Floating(),
+    #layout.Matrix(),
     #layout.Stack(num_stacks=2),
-    #layout.Bsp(),
-    layout.Matrix(),
     #layout.MonadTall(),
     #layout.MonadWide(),
-    layout.RatioTile(),
+    #layout.RatioTile(),
     #layout.Tile(),
     #layout.TreeTab(),
     #layout.VerticalTile(),
@@ -121,23 +135,19 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-colors = [
-    '#242321',
-    '#8cffba',
-    '#45413b',
-    '#f4cf86',
-    '#aeee00',
-    '#141413',
-    '#aeee00',
-    '#141413'
-]
+
+def open_pavucontrol():
+    qtile.cmd_spawn("pavucontrol")
+
+def open_powermenu():
+    qtile.cmd_spawn("clearine")
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(fmt=' {} ', background=colors[6], foreground=colors[7]),
-                widget.TextBox(text='\uE0B0 ', fontsize='15', background=colors[0], foreground=colors[6]),
+                widget.CurrentLayout(background=colors[4], foreground=colors[5]),
+                widget.TextBox(text='\uE0B0 ', fontsize='15', background=colors[0], foreground=colors[4]),
 
                 widget.GroupBox(background=colors[0], foreground=colors[1]),
 
@@ -151,16 +161,18 @@ screens = [
                 widget.Wlan(interface='wlp3s0', format=' {essid} {quality}/70', background=colors[2], foreground=colors[3]),
                 
                 widget.TextBox(text=' \uE0B2', fontsize='15', background=colors[2], foreground=colors[4]),
-                widget.Battery(format=' Battery: {char} {percent:2.0%}', background=colors[4], foreground=colors[5]),
+                widget.TextBox(text=' \u21AF ', fontsize='15', background=colors[4], foreground=colors[5]),
+                widget.Battery(background=colors[4], foreground=colors[5]),
                 
                 widget.TextBox(text=' \uE0B2', fontsize='15', background=colors[4], foreground=colors[2]),
-                widget.PulseVolume(fmt=' Volume: {}', background=colors[2], foreground=colors[3]),
+                widget.TextBox(text=' \u266A ', fontsize='15', background=colors[2], foreground=colors[3], mouse_callbacks={'Button1': open_pavucontrol}),
+                widget.PulseVolume(background=colors[2], foreground=colors[3]),
                 
                 widget.TextBox(text=' \uE0B2', fontsize='15', background=colors[2], foreground=colors[4]),
                 widget.Clock(format=' %Y-%m-%d %a %I:%M %p', background=colors[4], foreground=colors[5]),
                 
-                widget.TextBox(text=' \uE0B2', fontsize='15', background=colors[4], foreground=colors[2]),
-                widget.QuickExit(default_text=' Logout ', countdown_format='          {}s', background=colors[2], foreground=colors[3]),
+                widget.TextBox(text=' \uE0B2', fontsize='15', background=colors[4], foreground=colors[6]),
+                widget.TextBox(text=' \u2718 ', fontsize='15', background=colors[6], foreground=colors[7], mouse_callbacks={'Button1': open_powermenu}),
             ],
             20,
         ),
