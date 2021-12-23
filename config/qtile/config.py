@@ -95,17 +95,25 @@ keys = [
         desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups_attributes = [
+    {'index': "1", 'name': "TERM", 'layout': "columns", 'matches': None},
+    {'index': "2", 'name': "WWW", 'layout': "max", 'matches': [Match(wm_class='Chromium')]},
+    {'index': "3", 'name': "DEV", 'layout': "max", 'matches': [Match(wm_class='code-oss'), Match(wm_class='Processing')]},
+    {'index': "4", 'name': "GFX", 'layout': "max", 'matches': None},
+    {'index': "5", 'name': "DIY", 'layout': "floating", 'matches': None}
+]
 
-for i in groups:
+groups = [Group(i['name'], layout=i['layout'], matches=i['matches']) for i in groups_attributes]
+
+for i in groups_attributes:
     keys.extend([
         # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
-            desc="Switch to group {}".format(i.name)),
+        Key([mod], i['index'], lazy.group[i['name']].toscreen(),
+            desc="Switch to group {}".format(i['name'])),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name)),
+        Key([mod, "shift"], i['index'], lazy.window.togroup(i['name'], switch_group=True),
+            desc="Switch to & move focused window to group {}".format(i['name'])),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
@@ -129,7 +137,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Roboto',
+    font='Roboto Mono',
     fontsize=12,
     padding=0,
 )
@@ -146,10 +154,10 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(background=colors[4], foreground=colors[5]),
+                widget.CurrentLayout(fmt=' {0:10s}', background=colors[4], foreground=colors[5]),
                 widget.TextBox(text='\uE0B0 ', fontsize='15', background=colors[0], foreground=colors[4]),
 
-                widget.GroupBox(background=colors[0], foreground=colors[1]),
+                widget.GroupBox(disable_drag=True, highlight_method='text', borderwidth=2, this_current_screen_border=colors[3], background=colors[0], foreground=colors[1]),
 
                 widget.Prompt(background=colors[0], foreground=colors[1]),
                
