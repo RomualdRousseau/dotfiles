@@ -2,6 +2,11 @@
 set nocompatible
 set nowrap
 set termguicolors
+set t_Co=256
+
+" Display cursor line
+set cursorline
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 
 " Search
 set hlsearch
