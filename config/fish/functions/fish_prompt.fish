@@ -68,7 +68,7 @@ function fish_prompt
         if test $branch_detached -ne 0
             set_color red
         end
-        echo -nes " " $branch " "
+        echo -nes " "\uE0A0" " $branch " "
         if test $status_ahead -ne 0
             echo -n '⬆ '
         end
