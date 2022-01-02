@@ -1,4 +1,5 @@
 function fish_prompt
+    # Define colors inline with Badwolf vim theme
     set -l N1 (set_color -b aeee00)(set_color 141413)
     set -l N2 (set_color -b 45413b)(set_color aeee00)
     set -l N3 (set_color -b 45413b)(set_color f4cf86)
@@ -6,10 +7,14 @@ function fish_prompt
     set -l N5 (set_color -b ffa724)(set_color 141413)
     set -l N6 (set_color -b aeee00)(set_color ffa724)    
 
-    echo -nes $N5 " " $USER "@" $hostname " " $N6 \uE0B0
+    # User and hostname segment
+    set -l host (echo $hostname | sed 's/\..*$//')
+    echo -nes $N5 " " $USER "@" $host " " $N6 \uE0B0
 
+    # Current directory segment
     echo -nes $N1 " " (prompt_pwd) " " $N2 \uE0B0
 
+    # Git segment
     if not not set -l git_dir (command git rev-parse --git-dir 2>/dev/null)
         # Get either the branch name or a branch descriptor.
         set -l branch_detached 0
