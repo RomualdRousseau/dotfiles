@@ -3,8 +3,10 @@ set nocompatible
 set nowrap
 set termguicolors
 set t_Co=256
+set clipboard=unnamedplus
 
 " Display cursor line
+" set number
 set cursorline
 hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 
@@ -13,16 +15,17 @@ set hlsearch
 set incsearch
 set laststatus=2
 
-" Goog tabs for programming
+" Good tabs for programming
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
 set expandtab
 
 " Use mouse in vim
-set mouse=a
+" set mouse=a
 
 " Activate syntax coloring
+colorscheme badwolf
 syntax on
 
 " Plugins
@@ -41,13 +44,12 @@ let g:airline_powerline_fonts = 1
 
 " NERDTree settings
 " Keymaps
-nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <C-S-E> :NERDTreeToggle<CR>
 
 " Tagbar settings
 " Keymaps
-nnoremap <F4> :TagbarOpenAutoClose<CR>
+nnoremap <C-S-F> :TagbarOpenAutoClose<CR>
 
 " Gutentags settings
-" generate datebases in my cache directory, prevent gtags files polluting my project
+" generate datebases in my cache directory, prevent ctags files polluting my project
 let g:gutentags_cache_dir = expand('~/.cache/tags')
-
