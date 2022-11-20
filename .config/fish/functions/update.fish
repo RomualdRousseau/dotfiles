@@ -1,3 +1,4 @@
-function update --wraps='pacman -Syyu --color auto' --wraps='sudo pacman -Syyu --color auto' --wraps='sudo pacman -Syu --color auto' --description 'alias update sudo pacman -Syu --color auto'
-  sudo pacman -Syu --color auto $argv; 
+# Defined in - @ line 1
+function update --wraps='sudo apt update' --description 'alias update sudo apt update'
+  sudo apt update $argv;
 end
