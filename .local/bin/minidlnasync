@@ -1,3 +1,0 @@
-#!/bin/sh
-rsync -varz --delete /mnt/07061c8c-78ba-44e6-aacc-c7dc3d97cfd2/Videos/* minidlna@mqtt-server:/var/lib/minidlna/Videos
-

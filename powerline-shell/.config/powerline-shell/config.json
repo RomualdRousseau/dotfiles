@@ -1,0 +1,16 @@
+{
+  "segments": [
+    "virtual_env",
+    "username",
+    "ssh",
+    "cwd",
+    "git",
+    "git_stash",
+    "jobs",
+    "root"
+  ],
+  "cwd": {
+    "mode": "plain"
+  },
+  "theme": "gruvbox"
+}

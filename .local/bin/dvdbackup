@@ -1,3 +1,0 @@
-#!/bin/sh
-dvdbackup -M -i /dev/sr0 -p -v
-
