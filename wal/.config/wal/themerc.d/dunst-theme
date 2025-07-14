@@ -1,0 +1,3 @@
+cp -f "${HOME}/.cache/wal/colors.dunst" "${HOME}/.config/dunst/dunstrc.d/colors.conf"
+dunst &
+

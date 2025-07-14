@@ -1,0 +1,21 @@
+set $wallpaper /home/test/.local/share/wallpapers/wallpaper.jpg
+
+set $background #150c11
+set $foreground #d9cbd1
+
+set $color0 #150c11
+set $color1 #672CA5
+set $color2 #6D41AB
+set $color3 #9766AD
+set $color4 #9537C5
+set $color5 #A860D1
+set $color6 #2DD1BD
+set $color7 #d9cbd1
+set $color8 #978e92
+set $color9 #672CA5
+set $color10 #6D41AB
+set $color11 #9766AD
+set $color12 #9537C5
+set $color13 #A860D1
+set $color14 #2DD1BD
+set $color15 #d9cbd1

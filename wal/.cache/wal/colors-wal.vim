@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/test/.local/share/wallpapers/wallpaper.jpg"
+let background = "#150c11"
+let foreground = "#d9cbd1"
+let cursor     = "#d9cbd1"
+
+" Colors
+let color0  = "#150c11"
+let color1  = "#672CA5"
+let color2  = "#6D41AB"
+let color3  = "#9766AD"
+let color4  = "#9537C5"
+let color5  = "#A860D1"
+let color6  = "#2DD1BD"
+let color7  = "#d9cbd1"
+let color8  = "#978e92"
+let color9  = "#672CA5"
+let color10 = "#6D41AB"
+let color11 = "#9766AD"
+let color12 = "#9537C5"
+let color13 = "#A860D1"
+let color14 = "#2DD1BD"
+let color15 = "#d9cbd1"

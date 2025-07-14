@@ -11,3 +11,4 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 
 vim.opt.termguicolors = true
+vim.opt.winborder = "rounded"

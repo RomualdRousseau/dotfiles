@@ -1,10 +1,19 @@
 # dotfiles
+
 Various linux config files
 
-## Install vim plugin manager: junegunn/vim-plug
+## Packages
 
-```bash
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
+- dwm
+- dwmblocks-async
+- picom
+- rofi
+- python-pywal16
+- neofetch
+- feh
+- fish
+- dunst
+- kitty
+- nvim
+- yazi
+- fzf

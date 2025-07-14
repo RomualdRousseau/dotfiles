@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+kill -10 $(pidof dwmblocks)

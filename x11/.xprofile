@@ -1,0 +1,6 @@
+export PATH=$HOME/.local/bin:$PATH
+exec picom &
+dbus-update-activation-environment --all
+generate-themes
+gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
+dwmblocks &

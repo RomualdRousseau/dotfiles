@@ -1,0 +1,25 @@
+#!/usr/bin/sh
+# Display a bluetooth icon and connect bt devices
+
+dwmblocks_refresh() {
+  kill -10 $(pidof dwmblocks)
+}
+
+bt_connect() {
+  dev_id=$(echo "$1" | sed 's/Device \([0-9A-F:]\+\) \(.\+\)/\1/')
+  dev_name=$(echo "$1" | sed 's/Device \([0-9A-F:]\+\) \(.\+\)/\2/')
+  success=$(bluetoothctl connect $dev_id)
+  if [ $? -eq 0 ]; then
+    dunstify "$dev_name connected"
+  else
+    dunstify -u crtitical "$dev_name connection failure"
+  fi
+}
+
+case "$BLOCK_BUTTON" in
+1) bt_connect "$(bluetoothctl devices | rofi -dmenu -p "BT Devices:")" && dwmblocks_refresh ;;
+esac
+
+. sb-theme
+
+display "" 12
