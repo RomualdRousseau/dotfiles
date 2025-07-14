@@ -7,7 +7,6 @@ set clipboard=unnamed
 
 " Display cursor line
 set cursorline
-set colorcolumn=120
 
 " Search
 set hlsearch
