@@ -1,10 +1,10 @@
 #!/usr/bin/bash
 
 # Set wallpaper and generate color
-wal -i ~/.local/share/wallpapers/wallpaper.jpg
-feh --no-fehbg --bg-fill "$(< "${HOME}/.cache/wal/wal")"
+wal --cols16 --constrast 1.5 -i ~/.local/share/wallpapers/wallpaper.jpg
+feh --no-fehbg --bg-fill "$(<"${HOME}/.cache/wal/wal")"
 
 # Generate themes
 for i in ~/.config/wal/themerc.d/*-theme; do
-	source $i
+  source $i
 done

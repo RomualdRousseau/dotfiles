@@ -1,11 +1,11 @@
 [urgency_low]
-    background = "#9537C5"
-    foreground = "#672CA5"
+    background = "#9f3ad2"
+    foreground = "#903de7"
 
 [urgency_normal]
-    background = "#A860D1"
-    foreground = "#d9cbd1"
+    background = "#8f52b1"
+    foreground = "#9b9097"
 
 [urgency_critical]
-    background = "#6D41AB"
-    foreground = "#9537C5"
+    background = "#854ed1"
+    foreground = "#9f3ad2"
