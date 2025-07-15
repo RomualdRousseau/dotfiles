@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Set wallpaper and generate color
-wal --cols16 --constrast 1.5 -i ~/.local/share/wallpapers/wallpaper.jpg
+wal --cols16 --contrast 1.5 -n -i ~/.local/share/wallpapers/wallpaper.jpg
 feh --no-fehbg --bg-fill "$(<"${HOME}/.cache/wal/wal")"
 
 # Generate themes
