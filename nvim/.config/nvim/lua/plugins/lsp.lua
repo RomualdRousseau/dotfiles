@@ -17,7 +17,6 @@ return {
 			"mason-org/mason-lspconfig.nvim",
 			"hrsh7th/nvim-cmp",
 			"hrsh7th/cmp-nvim-lsp",
-			-- { "mason-org/mason-lspconfig.nvim", tag = "v1.32.0" },
 		},
 		config = function()
 			require("mason-lspconfig").setup({
@@ -25,11 +24,12 @@ return {
 				automatic_enable = false,
 			})
 
-			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			capabilities.general = {
 				positionEncodings = { "utf-16" },
 			}
+
+			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
@@ -60,10 +60,11 @@ return {
 							vim.wait(100)
 						end,
 					})
+
+					local dap_python = require("dap-python")
+					vim.keymap.set("n", "<leader>tc", dap_python.test_class, {})
+					vim.keymap.set("n", "<leader>tm", dap_python.test_method, {})
 				end,
-			})
-			lspconfig.jdtls.setup({
-				capabilities = capabilities,
 			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -114,6 +115,47 @@ return {
 					end
 				end,
 			})
+		end,
+	},
+	{
+		"mfussenegger/nvim-jdtls",
+		dependencies = {
+			"mason-org/mason.nvim",
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-nvim-lsp",
+		},
+		ft = "java",
+		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			capabilities.general = {
+				positionEncodings = { "utf-16" },
+			}
+
+			local jdtls = require("jdtls")
+			local jdtls_dap = require("jdtls.dap")
+			jdtls.start_or_attach({
+				capabilities = capabilities,
+				cmd = {
+					vim.fn.expand("$HOME/.local/share/nvim/mason/bin/jdtls"),
+					("--jvm-arg=-javaagent:%s"):format(
+						vim.fn.expand("$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar")
+					),
+				},
+				on_attach = function(client, bufnr)
+					jdtls.setup_dap({ hotcodereplace = "auto" })
+					jdtls_dap.setup_dap_main_class_configs()
+					jdtls.add_commands()
+				end,
+				init_options = {
+					bundles = vim.split(
+						vim.fn.glob("$HOME/.local/share/nvim/mason/packages/java-*/extension/server/*.jar", 1),
+						"\n"
+					),
+				},
+			})
+
+			vim.keymap.set("n", "<leader>tc", jdtls.test_class, {})
+			vim.keymap.set("n", "<leader>tm", jdtls.test_nearest_method, {})
 		end,
 	},
 }
