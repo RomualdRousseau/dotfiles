@@ -28,8 +28,5 @@ return {
       on_attach = on_attach,
       init_options = init_options,
     })
-
-    vim.keymap.set("n", "<leader>tc", require("jdtls").test_class, {})
-    vim.keymap.set("n", "<leader>tm", require("jdtls").test_nearest_method, {})
   end,
 }

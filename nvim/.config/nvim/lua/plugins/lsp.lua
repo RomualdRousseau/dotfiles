@@ -64,9 +64,8 @@ return {
         automatic_enable = false,
       })
 
-      require("lsp.lua_ls").setup()
-      require("lsp.pyright").setup()
-      require("lsp.ruff").setup()
+      require("lsp.lua").setup()
+      require("lsp.python").setup()
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>k", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
@@ -79,6 +78,15 @@ return {
       vim.keymap.set("n", "<leader>rf", vim.lsp.buf.format, {})
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
       vim.keymap.set("n", "<leader>rq", vim.lsp.buf.code_action, {})
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "python",
+        callback = function(args)
+          local dap_python = require("dap-python")
+          vim.keymap.set("n", "<leader>tc", dap_python.test_class, {})
+          vim.keymap.set("n", "<leader>tm", dap_python.test_method, {})
+        end,
+      })
     end,
   },
   {
@@ -88,12 +96,15 @@ return {
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
     },
-    -- ft = "java",
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "java",
         callback = function(args)
           require("lsp.java").setup()
+
+          local jdtls = require("jdtls")
+          vim.keymap.set("n", "<leader>tc", jdtls.test_class, {})
+          vim.keymap.set("n", "<leader>tm", jdtls.test_nearest_method, {})
         end,
       })
     end,
