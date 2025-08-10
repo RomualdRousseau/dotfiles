@@ -1,6 +1,26 @@
+# cache
 Cached Theme.pak
+
+# fish
 fish_variables
-google-cloud-sdk.fish
+
+# pyenv
 pyenv.fish
+
+# uv
 uv.env.fish
+
+# nvm
+nvm.fish
+_nvm_*.fish
+
+# sdk
+sdk.fish
+__sdkman-noexport-init.sh
+
+# nvim
 lazy-lock.json
+
+# google sdk
+google-cloud-sdk.fish
+google-cloud-cli.fish
