@@ -3,6 +3,10 @@ Cached Theme.pak
 
 # fish
 fish_variables
+fish_plugins
+
+# fisher
+fisher.fish
 
 # pyenv
 pyenv.fish
