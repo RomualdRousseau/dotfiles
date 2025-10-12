@@ -5,8 +5,6 @@ return {
 			positionEncodings = { "utf-16" },
 		}
 
-		local lspconfig = require("lspconfig")
-
 		local settings = {
 			python = {
 				analysis = {
@@ -40,12 +38,12 @@ return {
 			})
 		end
 
-		lspconfig.pyright.setup({
+		vim.lsp.config("pyright", {
 			capabilities = capabilities,
 			settings = settings,
 		})
 
-		lspconfig.ruff.setup({
+		vim.lsp.config("ruff", {
 			capabilities = capabilities,
 			init_options = init_options,
 			on_attach = on_attach,
