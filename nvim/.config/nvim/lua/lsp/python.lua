@@ -42,11 +42,13 @@ return {
 			capabilities = capabilities,
 			settings = settings,
 		})
+		vim.lsp.enable("pyright")
 
 		vim.lsp.config("ruff", {
 			capabilities = capabilities,
 			init_options = init_options,
 			on_attach = on_attach,
 		})
+		vim.lsp.enable("ruff")
 	end,
 }
