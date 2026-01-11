@@ -28,3 +28,7 @@ lazy-lock.json
 # google sdk
 google-cloud-sdk.fish
 google-cloud-cli.fish
+gemini.env.fish
+
+# work
+certs.env.fish
