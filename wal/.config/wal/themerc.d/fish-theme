@@ -1,0 +1,4 @@
+if [ -d "${HOME}/.config/fish" ]; then
+  cp -f "${HOME}/.cache/wal/colors.fish" "${HOME}/.config/fish/themes/wal.theme"
+  fish -c "fish_config theme choose wal && fish_config theme save"
+fi

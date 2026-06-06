@@ -1,8 +1,10 @@
 #!/usr/bin/bash
 
+feh --recursive --auto-zoom --action "ln -fs '%F' ~/.local/share/wallpapers/wallpaper.jpg" ~/.local/share/wallpapers
+
 # Set wallpaper and generate color
 wal --cols16 --contrast 1.5 -n -i ~/.local/share/wallpapers/wallpaper.jpg
-feh --no-fehbg --bg-fill "$(<"${HOME}/.cache/wal/wal")"
+# feh --no-fehbg --bg-fill "$(<"${HOME}/.cache/wal/wal")"
 
 # Generate themes
 for i in ~/.config/wal/themerc.d/*-theme; do
