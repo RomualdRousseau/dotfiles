@@ -1,0 +1,5 @@
+[services.my-server]
+type = "sftp"
+host = "romualdrousseau.is-a-geek.org"
+user = "romuald"
+port = 22
