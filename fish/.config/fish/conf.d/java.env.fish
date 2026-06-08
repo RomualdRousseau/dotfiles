@@ -1,1 +1,3 @@
-set -x JAVA_HOME /usr/lib/jvm/java-1.21.0-openjdk-amd64
+if test -d "/usr/lib/jvm/default"
+  set -x JAVA_HOME "/usr/lib/jvm/default"
+end
