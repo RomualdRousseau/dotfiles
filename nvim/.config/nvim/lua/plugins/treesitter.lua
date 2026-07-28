@@ -36,12 +36,14 @@ if vim.fn.has("nvim-0.12") == 1 then
 else
   return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
     lazy = false,
+
     config = function()
       local config = require("nvim-treesitter.configs")
       config.setup({
-        ensure_installed = { "lua", "python", "java" },
+        ensure_installed = { "lua", "python", "java", "markdown", "toml", "yaml", "json", "just" },
         highlight = { enable = true },
         indent = { enable = true },
       })
