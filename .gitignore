@@ -30,5 +30,8 @@ google-cloud-sdk.fish
 google-cloud-cli.fish
 gemini.env.fish
 
+# keychain
+keychain.fish
+
 # work
 certs.env.fish
