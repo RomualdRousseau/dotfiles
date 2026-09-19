@@ -35,3 +35,4 @@ keychain.fish
 
 # work
 certs.env.fish
+vertexai.env.fish

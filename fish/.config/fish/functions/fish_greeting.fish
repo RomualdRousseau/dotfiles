@@ -1,4 +1,4 @@
 if status is-interactive
-    neofetch
+    fastfetch --config paleofetch.jsonc
     fortune
 end
