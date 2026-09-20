@@ -31,7 +31,7 @@ return {
       }
 
       local on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
+        if client:supports_method("textDocument/formatting") then
           local fmtgroup = vim.api.nvim_create_augroup("LspFormatting", {})
           vim.api.nvim_clear_autocmds({ group = fmtgroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
